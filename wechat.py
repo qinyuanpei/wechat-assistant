@@ -11,8 +11,14 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+filePath = FileUtility().getCurrentPath() + "/config.ini"
+config = Config(filePath)
+
 bot_state = BotState.default
 msg_sender = None
+ignoreChatRooms = config.readConfigItem('ignoreList','chatRooms').split(',')
+print ignoreChatRooms
+
 
 @itchat.msg_register(itchat.content.TEXT, isFriendChat=True, isGroupChat=True, isMpChat=False)
 def autoReplyText(msg):
@@ -21,7 +27,7 @@ def autoReplyText(msg):
     apiKey = config.readConfigItem("tulingConfig","apiKey")
     bot = TuringBot(apiKey)
     info = bot.getInfo(msg['Text'])
-    return info
+    return '[Lisa]' + info
 
 @itchat.msg_register(itchat.content.PICTURE,isFriendChat=True, isGroupChat=True, isMpChat=False)
 def autoReplyPicture(msg):
@@ -47,13 +53,10 @@ def interceptMessage(msg):
             msg['Text'](msg['FileName'])
             itchat.send('@%s@%s' % ({'Picture': 'img'}.get(msg['Type'], 'fil'), msg['FileName']), msg_sender)
         else:
-            msg_text = msg['Text']
+            msg_text = '[Lisa]' + msg['Text']
             itchat.send(msg_text, msg_sender)
 
 itchat.auto_login(hotReload=True)
 xiaoice = itchat.search_mps(name='小冰')[0]['UserName']
-chatroom = itchat.search_chatrooms(name='神一样的队友')[0]
-chatroom = itchat.update_chatroom(chatroom['UserName'])
-qrcode = FileUtility().getCurrentPath() + "/qrcode.jpeg"
 itchat.run(debug=True)
     
