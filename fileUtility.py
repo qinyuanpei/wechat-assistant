@@ -16,3 +16,9 @@ class FileUtility:
     def createFolder(self,filePath):
         if(os.path.exists(filePath) == False): 
             os.mkdir(filePath)
+
+    def readAllTexts(self,filePath):
+        texts = []
+        for text in open(filePath):
+            texts.append(text)
+        return texts
