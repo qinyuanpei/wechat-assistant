@@ -16,6 +16,7 @@ class FileUtility:
     def createFolder(self,filePath):
         if(os.path.exists(filePath) == False): 
             os.mkdir(filePath)
+<<<<<<< HEAD
         
     def readAllTexts(self,filePath):
         texts = []
@@ -23,3 +24,5 @@ class FileUtility:
             texts.append(text)
         return texts
 
+=======
+>>>>>>> e8fac914a5dedd2638976c255d7f078c2466066f

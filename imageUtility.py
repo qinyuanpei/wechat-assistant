@@ -5,8 +5,11 @@ import random
 import requests
 from bs4 import BeautifulSoup
 from fileUtility import FileUtility
+<<<<<<< HEAD
 import pytesseract
 from PIL import Image
+=======
+>>>>>>> e8fac914a5dedd2638976c255d7f078c2466066f
 import os
 import sys
 reload(sys)
@@ -55,12 +58,15 @@ class ImageService:
             f.write(response.content)
 
         return filePath
+<<<<<<< HEAD
     
     def matchText(self,fileName):
         image = Image.open('test.png')
         text = pytesseract.image_to_string(image, lang='chi_sim')
         return 
 
+=======
+>>>>>>> e8fac914a5dedd2638976c255d7f078c2466066f
 
 if __name__ == "__main__":
     service = ImageService()

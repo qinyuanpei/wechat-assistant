@@ -11,7 +11,12 @@ def msg_register(msgType):
         return func
     return decorator
 
+<<<<<<< HEAD
 
+=======
+class BotState:
+    default,autoReply,autoChat,autoPicture = range(0,4)
+>>>>>>> e8fac914a5dedd2638976c255d7f078c2466066f
 
 class WeChatAssistant:
     def __init__(self):
