@@ -34,8 +34,8 @@ def forwardMessage(msg):
     msg_sender = msg['FromUserName']
     msg['Text'](msg['FileName'])
     result = PictureRecognition(msg['FileName'])
-    if()
-    itchat.send(result[0],msg_sender)
+    if(len(result)>=1):
+    	itchat.send(result[0],msg_sender)
     itchat.send('@%s@%s' % ({'Picture': 'img'}.get(msg['Type'], 'fil'), msg['FileName']), xiaoice)
 
 @itchat.msg_register([itchat.content.PICTURE,itchat.content.TEXT],isMpChat=True)
